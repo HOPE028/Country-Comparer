@@ -1,5 +1,6 @@
 import React from 'react'
 import { countries } from './data/countries'
+// import { v4 as uuidv4 } from 'uuid'
 
 interface countrySelector {
   countryOne: string
@@ -19,7 +20,7 @@ export default function CountrySelector(props: countrySelector) {
         name='Country Selector'
         id='country-selector'
         onChange={(e) => handleChange(e.target.value)}
-        value={props.currentCountry}
+        // defaultValue={props.currentCountry}
       >
         {countries
           .filter(
@@ -27,6 +28,8 @@ export default function CountrySelector(props: countrySelector) {
               country !== props.countryOne && country !== props.countryTwo
           )
           .map((country, index) => {
+            // const code = uuidv4()
+
             return (
               <option key={index} value={country}>
                 {country}

@@ -10,28 +10,29 @@ function App() {
   const [countryOne, setCountryOne] = useState<string>('United States')
   const [countryTwo, setCountryTwo] = useState<string>('Canada')
 
-  // useEffect(() => {
-  //   const url =
-  //     'https://data.nasdaq.com/api/v3/datatables/WB/DATA?series_id=VC.PKP.TOTL.UN,SP.POP.TOTL&country_code=XKX,AFG&api_key=wCaQ4RwKqax92nzyh_px'
-  //   axios
-  //     .get(url)
-  //     .then((res) => console.log(res))
-  //     .catch((error) => console.log(error))
+  useEffect(() => {
+    const url =
+      'https://data.nasdaq.com/api/v3/datatables/WB/DATA?series_id=VC.PKP.TOTL.UN,SP.POP.TOTL&country_code=XKX,AFG&api_key=wCaQ4RwKqax92nzyh_px'
+    axios
+      .get(url)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error))
 
-  //   const countryCode = 'BRA'
+    const countryCode = 'BRA'
 
-  //   axios
-  //     .get(`https://countryflagsapi.com/svg/${countryCode}`)
-  //     .then((res) => {
-  //       console.log(res)
-  //       setCountryImage(res)
-  //     })
-  //     .catch((error) => console.log(error))
-  // }, [])
+    axios
+      .get(`https://countryflagsapi.com/svg/${countryCode}`)
+      .then((res) => res.data)
+      .then((res) => {
+        console.log(res)
+        setCountryImage(res)
+      })
+      .catch((error) => console.log(error))
+  }, [])
 
   return (
     <div>
-      <CountrySelector
+      {/* <CountrySelector
         countryOne={countryOne}
         countryTwo={countryTwo}
         currentCountry={countryOne}
@@ -43,7 +44,14 @@ function App() {
         countryTwo={countryTwo}
         currentCountry={countryTwo}
         setCountry={setCountryTwo}
-      />
+      /> */}
+
+      {/* <svg>{countryImage}</svg> */}
+
+      {/* {countryImage && countryImage.data}
+       */}
+
+      <svg dangerouslySetInnerHTML={{ __html: countryImage }} />
     </div>
   )
 }

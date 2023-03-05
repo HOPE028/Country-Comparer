@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import CountrySelector from './countrySelector'
 import axios from 'axios'
-
+// import Test from './test'
 import './App.css'
-import { count } from 'console'
 
 function App() {
   const [countryImage, setCountryImage] = useState<any>()
-  const [countryOne, setCountryOne] = useState<string>('United States')
-  const [countryTwo, setCountryTwo] = useState<string>('Canada')
+  const [countryOne, setCountryOne] = useState<string>('')
+  const [countryTwo, setCountryTwo] = useState<string>('')
 
   useEffect(() => {
     const url =
@@ -32,28 +31,28 @@ function App() {
 
   return (
     <div>
-      {/* <CountrySelector
-        countryOne={countryOne}
-        countryTwo={countryTwo}
-        currentCountry={countryOne}
-        setCountry={setCountryOne}
+      <CountrySelector
+        countryOther={countryTwo}
+        selectedOption={countryOne}
+        setSelectedOption={setCountryOne}
       />
 
       <CountrySelector
-        countryOne={countryOne}
-        countryTwo={countryTwo}
-        currentCountry={countryTwo}
-        setCountry={setCountryTwo}
-      /> */}
+        countryOther={countryOne}
+        selectedOption={countryTwo}
+        setSelectedOption={setCountryTwo}
+      />
 
       {/* <svg>{countryImage}</svg> */}
 
       {/* {countryImage && countryImage.data}
-       */}
+      
 
-      <svg dangerouslySetInnerHTML={{ __html: countryImage }} />
+      {/* <svg dangerouslySetInnerHTML={{ __html: countryImage }} /> */}
     </div>
   )
 }
+
+// function CountrySelector(props: )
 
 export default App

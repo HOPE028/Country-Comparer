@@ -6,7 +6,6 @@ export const countries = [
   'Andorra',
   'Angola',
   'Antigua and Barbuda',
-  'Arab World',
   'Argentina',
   'Armenia',
   'Aruba',

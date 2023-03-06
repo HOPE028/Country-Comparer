@@ -5,7 +5,9 @@ import ChoosingCountries from './components/ChoosingCountries'
 import './App.css'
 
 function App() {
-  const [countryImage, setCountryImage] = useState<any>()
+  const [countryImage, setCountryImage] = useState<any>(
+    'https://countryflagsapi.com/png/bra'
+  )
   const [countryOne, setCountryOne] = useState<string>('')
   const [countryTwo, setCountryTwo] = useState<string>('')
 
@@ -17,16 +19,16 @@ function App() {
       .then((res) => console.log(res))
       .catch((error) => console.log(error))
 
-    const countryCode = 'BRA'
+    // const countryCode = 'BRA'
 
-    axios
-      .get(`https://countryflagsapi.com/svg/${countryCode}`)
-      .then((res) => res.data)
-      .then((res) => {
-        console.log(res)
-        setCountryImage(res)
-      })
-      .catch((error) => console.log(error))
+    // axios
+    //   .get(`https://countryflagsapi.com/png/${countryCode}`)
+    //   .then((res) => res.data)
+    //   .then((res) => {
+    //     console.log(res)
+    //     setCountryImage(res)
+    //   })
+    //   .catch((error) => console.log(error))
   }, [])
 
   return (
@@ -37,12 +39,16 @@ function App() {
         setCountryOne={setCountryOne}
         setCountryTwo={setCountryTwo}
       />
-      {/* <svg>{countryImage}</svg> */}
 
-      {/* {countryImage && countryImage.data}
-      
+      <img crossOrigin='anonymous' src={countryImage} />
 
-      {/* <svg dangerouslySetInnerHTML={{ __html: countryImage }} /> */}
+      {/* <img src='https://countryflagsapi.com/png/ad' alt='Andorra flag' /> */}
+
+      <img
+        crossOrigin='anonymous'
+        src='https://countryflagsapi.com/svg/ae'
+        alt='United Arab Emirates flag'
+      />
     </div>
   )
 }

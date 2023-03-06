@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { countries } from './data/countries'
+import { countries } from '../data/countries'
 
 interface interfaceCountrySelector {
   countryOther: string
@@ -8,10 +8,6 @@ interface interfaceCountrySelector {
 }
 
 export default function CountrySelector(props: interfaceCountrySelector) {
-  // const [selectedOption, setSelectedOption] = useState('')
-  // const [country1, setCountry1] = useState('United States')
-  // const [country2, setCountry2] = useState('Canada')
-
   return (
     <div>
       <label htmlFor='select-option'>Select a country:</label>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import CountrySelector from './countrySelector'
 import axios from 'axios'
+import ChoosingCountries from './components/ChoosingCountries'
 // import Test from './test'
 import './App.css'
 
@@ -31,18 +31,12 @@ function App() {
 
   return (
     <div>
-      <CountrySelector
-        countryOther={countryTwo}
-        selectedOption={countryOne}
-        setSelectedOption={setCountryOne}
+      <ChoosingCountries
+        countryOne={countryOne}
+        countryTwo={countryTwo}
+        setCountryOne={setCountryOne}
+        setCountryTwo={setCountryTwo}
       />
-
-      <CountrySelector
-        countryOther={countryOne}
-        selectedOption={countryTwo}
-        setSelectedOption={setCountryTwo}
-      />
-
       {/* <svg>{countryImage}</svg> */}
 
       {/* {countryImage && countryImage.data}

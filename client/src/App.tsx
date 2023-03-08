@@ -42,8 +42,6 @@ function App() {
 
       <img crossOrigin='anonymous' src={countryImage} />
 
-      {/* <img src='https://countryflagsapi.com/png/ad' alt='Andorra flag' /> */}
-
       <img
         crossOrigin='anonymous'
         src='https://countryflagsapi.com/svg/ae'

@@ -18,17 +18,6 @@ function App() {
       .get(url)
       .then((res) => console.log(res))
       .catch((error) => console.log(error))
-
-    // const countryCode = 'BRA'
-
-    // axios
-    //   .get(`https://countryflagsapi.com/png/${countryCode}`)
-    //   .then((res) => res.data)
-    //   .then((res) => {
-    //     console.log(res)
-    //     setCountryImage(res)
-    //   })
-    //   .catch((error) => console.log(error))
   }, [])
 
   return (

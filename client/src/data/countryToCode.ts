@@ -1,4 +1,8 @@
-export const countryCodes = {
+interface interfaceCountryCodes {
+  [key: string]: string
+}
+
+export const countryCodes: interfaceCountryCodes = {
   Afghanistan: 'AFG',
   Africa: 'AFR',
   Albania: 'ALB',
@@ -216,8 +220,4 @@ export const countryCodes = {
   'Yemen, Rep.': 'YEM',
   Zambia: 'ZMB',
   Zimbabwe: 'ZWE',
-}
-
-module.exports = {
-  countryCodes,
 }

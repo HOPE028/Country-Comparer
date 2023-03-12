@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import CountrySelector from './CountrySelector'
+import { countryCodes } from '../data/countryToCode'
 
 interface interfaceChoosingCountries {
   countryOne: string
   countryTwo: string
   setCountryOne: Function
   setCountryTwo: Function
+  fetchData: Function
 }
 
 export default function ChoosingCountries(props: interfaceChoosingCountries) {
@@ -23,6 +25,11 @@ export default function ChoosingCountries(props: interfaceChoosingCountries) {
     } else {
       setError('Please select a coutry for country two input')
     }
+
+    const countryOneCode = countryCodes[props.countryOne]
+    const countryTwoCode = countryCodes[props.countryTwo]
+
+    props.fetchData(countryOneCode, countryTwoCode)
   }
 
   return (

@@ -50,7 +50,9 @@ function App() {
       .then((res) => res.data)
       .then((res) => res.datatable)
       .then((res) => res.data)
-      .then((res) => sortData(res, countryOneCode, countryTwoCode))
+      .then((res) => {
+        sortData(res, countryOneCode, countryTwoCode)
+      })
       .catch((error) => console.log(error))
   }
 
@@ -70,6 +72,10 @@ function App() {
   ) => {
     console.log(dataFromWB)
 
+    setDataFiltered([])
+
+    const temporaryWholeDataFilteredObject: Array<dataFiltered> = []
+
     for (const code of data) {
       const list = dataFromWB.filter((field) => field[0] === code)
 
@@ -87,11 +93,10 @@ function App() {
         countryTwoData: listCountryTwo[0][4],
       }
 
-      let temporaryWholeDataFilteredObject = dataFiltered
       temporaryWholeDataFilteredObject.push(temporaryFilteredObject)
-
-      setDataFiltered(temporaryWholeDataFilteredObject)
     }
+
+    setDataFiltered(temporaryWholeDataFilteredObject)
   }
 
   // useEffect(() => {

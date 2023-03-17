@@ -93,7 +93,7 @@ export const countryCodes: interfaceCountryCodes = {
   Iceland: 'ISL',
   India: 'IND',
   Indonesia: 'IDN',
-  'Iran, Islamic Rep.': 'IRN',
+  Iran: 'IRN',
   Iraq: 'IRQ',
   Ireland: 'IRL',
   'Isle of Man': 'IMN',

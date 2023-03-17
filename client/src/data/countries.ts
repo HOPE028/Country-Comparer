@@ -89,7 +89,7 @@ export const countries = [
   'Iceland',
   'India',
   'Indonesia',
-  'Iran, Islamic Rep.',
+  'Iran',
   'Iraq',
   'Ireland',
   'Isle of Man',

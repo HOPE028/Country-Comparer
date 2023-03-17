@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import CountrySelector from './CountrySelector'
-import { countryCodes } from '../data/countryToCode'
+import { countryCodes } from '../data/countryToCode3Digit'
 
 interface interfaceChoosingCountries {
   countryOne: string

@@ -1,4 +1,8 @@
-export const countryToCode2Digit = {
+interface interfaceCountryCodes {
+  [key: string]: string
+}
+
+export const countryToCode2Digit: interfaceCountryCodes = {
   Andorra: 'ad',
   'United Arab Emirates': 'ae',
   Afghanistan: 'af',

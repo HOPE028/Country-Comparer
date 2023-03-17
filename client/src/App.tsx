@@ -3,6 +3,7 @@ import axios from 'axios'
 import ChoosingCountries from './components/ChoosingCountries'
 import { DataCodes } from './data/DataCode'
 import { data } from './data/data'
+import { countryToCode2Digit } from './data/countryToCode2Digit'
 // import Test from './test'
 import './App.css'
 
@@ -37,9 +38,16 @@ function App() {
   const [dataFiltered, setDataFiltered] = useState<Array<dataFiltered>>([])
 
   const fetchData = (countryOneCode: string, countryTwoCode: string) => {
+    const countryOne2DigitCode = countryToCode2Digit[countryOne]
+    const countryTwo2DigitCode = countryToCode2Digit[countryTwo]
+
     // Set flags to the correct country.
-    setCountryOneImage(`https://countryflagsapi.com/png/${countryOneCode}`)
-    setCountryTwoImage(`https://countryflagsapi.com/png/${countryTwoCode}`)
+    setCountryOneImage(
+      `https://flagcdn.com/256x192/${countryOne2DigitCode}.png`
+    )
+    setCountryTwoImage(
+      `https://flagcdn.com/256x192/${countryTwo2DigitCode}.png`
+    )
 
     // Creating urls for country data
     const WBDataURL = `https://data.nasdaq.com/api/v3/datatables/WB/DATA?series_id=${data.map(
@@ -58,11 +66,6 @@ function App() {
   }
 
   interface countryData {
-    // series_id: string
-    // country_code: string
-    // country_name: string
-    // year: number
-    // value: number
     [index: number]: string | number
   }
 
@@ -138,21 +141,22 @@ function App() {
         setCountryTwo={setCountryTwo}
         fetchData={fetchData}
       />
-
       {/* <img
         crossOrigin='anonymous'
         src={countryImage}
         style={{ width: '300px' }}
       /> */}
-
-      <img
+      {/* <img
         // crossOrigin='anonymous'
         src='https://flagsapi.com/CA/flat/64.png'
         alt='United Arab Emirates flag'
         style={{ width: '300px' }}
-      />
-
+      /> */}
       <button onClick={() => console.log(dataFiltered)}>DATA</button>
+
+      {countryOneImage && (
+        <ViewNames countryOneName={countryOne} countryTwoName={countryTwo} />
+      )}
 
       {countryOneImage && (
         <ViewFlags
@@ -162,7 +166,6 @@ function App() {
           countryTwoName={countryTwo}
         />
       )}
-
       {dataFiltered.length > 0 && <ViewData data={dataFiltered} />}
     </div>
   )
@@ -171,6 +174,25 @@ function App() {
 // function CountrySelector(props: )
 
 export default App
+
+interface interfaceViewNames {
+  countryOneName: string
+  countryTwoName: string
+}
+
+function ViewNames(props: interfaceViewNames) {
+  return (
+    <div className='viewNames'>
+      <div></div>
+      <div className='name'>
+        <h1>{props.countryOneName}</h1>
+      </div>
+      <div className='name'>
+        <h1>{props.countryTwoName}</h1>
+      </div>
+    </div>
+  )
+}
 
 interface interfaceViewFlags {
   countryOneImage: string
@@ -183,14 +205,14 @@ function ViewFlags(props: interfaceViewFlags) {
   return (
     <div className='viewFlags'>
       <div></div>
-      <div>
+      <div className='flag'>
         <img
           // crossOrigin='anonymous'
           src={props.countryOneImage}
           alt={`${props.countryOneName} National Flag`}
         />
       </div>
-      <div>
+      <div className='flag'>
         <img
           // crossOrigin='anonymous'
           src={props.countryTwoImage}

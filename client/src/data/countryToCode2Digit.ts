@@ -257,4 +257,5 @@ export const countryToCode2Digit: interfaceCountryCodes = {
   'South Africa': 'za',
   Zambia: 'zm',
   Zimbabwe: 'zw',
+  'Cabo Verde': 'cv',
 }

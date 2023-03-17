@@ -6,11 +6,33 @@
   scroll-behavior: smooth;
 }
 
+.flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.none {
+  border: none;
+  background: none;
+}
+
+.Search-Button {
+  /* align-self: center; */
+  position: relative;
+  top: 5px;
+  width: 20px;
+}
+
+/* View Data */
+
 .viewData {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  row-gap: 5vh;
+  width: 100%;
+  max-width: 1800px;
+  /* row-gap: 5vh; */
 }
 
 .rowData {
@@ -22,15 +44,21 @@
 }
 
 .dataField {
-  /* border: solid blue 2px; */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  /* overflow-wrap: break-word; */
+  /* overflow: scroll; */
 }
 
 .showLineRight {
-  border-right: dotted blue 3px;
+  border-right: dashed black 3px;
 }
 
 .showLineBotton {
-  border-bottom: dotted blue 3px;
+  border-bottom: dashed black 3px;
 }
 
 .dataField h2 {
@@ -42,6 +70,8 @@
 /* View Flags */
 
 .viewFlags {
+  width: 100%;
+  max-width: 1800px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
@@ -55,6 +85,16 @@
   align-items: center;
 }
 
+.hundred {
+  width: 60%;
+}
+
+@media screen and (min-width: 1200px) {
+  .hundred {
+    width: 40%;
+  }
+}
+
 /* View Names */
 
 .viewNames {
@@ -63,6 +103,8 @@
   grid-template-rows: 1fr;
   column-gap: normal;
   margin-bottom: 30px;
+  width: 100%;
+  max-width: 1800px;
 }
 
 .name {
@@ -74,4 +116,121 @@
 
 .name h1 {
   font-size: 40px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 900px) {
+  .viewNames {
+    grid-template-columns: 0fr 1fr 1fr;
+  }
+
+  .viewFlags {
+    grid-template-columns: 0fr 1fr 1fr;
+  }
+
+  .dataField h2 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .dataField h2 {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .dataField h2 {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .dataField h2 {
+    font-size: 10px;
+  }
+}
+
+/* Country Selector */
+
+.Choosing_Countries_Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Choosing_Countries {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.country-selector {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+}
+
+label {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.select-container {
+  position: relative;
+  width: 100%;
+}
+
+input[type='text'] {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.option {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  width: 100%;
+}
+
+.option:hover {
+  background-color: #f2f2f2;
+}
+
+.selected-option {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #555;
+  padding: 0.5rem;
+  background-color: #f2f2f2;
+}
+
+@media screen and (min-width: 768px) {
+  .Choosing_Countries {
+    flex-direction: row;
+  }
+
+  .country-selector {
+    width: 50%;
+    margin: 0 1rem;
+  }
 }

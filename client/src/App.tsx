@@ -22,6 +22,10 @@ function App() {
   const [countryOne, setCountryOne] = useState<string>('')
   const [countryTwo, setCountryTwo] = useState<string>('')
 
+  // Country Chosen Name
+  const [countryOneName, setCountryOneName] = useState<string>('')
+  const [countryTwoName, setCountryTwoName] = useState<string>('')
+
   // Api endpoint for country flags
   const [countryOneImage, setCountryOneImage] = useState<string>('')
   const [countryTwoImage, setCountryTwoImage] = useState<string>('')
@@ -37,9 +41,18 @@ function App() {
 
   const [dataFiltered, setDataFiltered] = useState<Array<dataFiltered>>([])
 
-  const fetchData = (countryOneCode: string, countryTwoCode: string) => {
+  const fetchData = (
+    countryOneCode: string,
+    countryTwoCode: string,
+    countryOne: string,
+    countryTwo: string
+  ) => {
     const countryOne2DigitCode = countryToCode2Digit[countryOne]
     const countryTwo2DigitCode = countryToCode2Digit[countryTwo]
+
+    // Set country names
+    setCountryOneName(countryOne)
+    setCountryTwoName(countryTwo)
 
     // Set flags to the correct country.
     setCountryOneImage(
@@ -152,10 +165,15 @@ function App() {
         alt='United Arab Emirates flag'
         style={{ width: '300px' }}
       /> */}
-      <button onClick={() => console.log(dataFiltered)}>DATA</button>
+      {/* <button onClick={() => console.log(dataFiltered)}>DATA</button> */}
 
-      {countryOneImage && (
-        <ViewNames countryOneName={countryOne} countryTwoName={countryTwo} />
+      <div style={{ marginTop: '5vh' }}></div>
+
+      {countryOneName && (
+        <ViewNames
+          countryOneName={countryOneName}
+          countryTwoName={countryTwoName}
+        />
       )}
 
       {countryOneImage && (
@@ -208,12 +226,14 @@ function ViewFlags(props: interfaceViewFlags) {
       <div className='flag'>
         <img
           // crossOrigin='anonymous'
+          className='hundred'
           src={props.countryOneImage}
           alt={`${props.countryOneName} National Flag`}
         />
       </div>
       <div className='flag'>
         <img
+          className='hundred'
           // crossOrigin='anonymous'
           src={props.countryTwoImage}
           alt={`${props.countryTwoName} National Flag`}

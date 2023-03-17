@@ -87,10 +87,14 @@ function App() {
 
       console.log(label)
 
+      // const countryOneData ===
+
       const temporaryFilteredObject: dataFiltered = {
         dataLabel: label,
-        countryOneData: listCountryOne[0][4],
-        countryTwoData: listCountryTwo[0][4],
+        countryOneData:
+          listCountryOne[0] !== undefined ? listCountryOne[0][4] : 'N/A',
+        countryTwoData:
+          listCountryTwo[0] !== undefined ? listCountryTwo[0][4] : 'N/A',
       }
 
       temporaryWholeDataFilteredObject.push(temporaryFilteredObject)

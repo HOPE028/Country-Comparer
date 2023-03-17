@@ -12,7 +12,7 @@ export const countries = [
   'Australia',
   'Austria',
   'Azerbaijan',
-  'Bahamas, The',
+  'Bahamas',
   'Bahrain',
   'Bangladesh',
   'Barbados',

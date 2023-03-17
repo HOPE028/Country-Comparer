@@ -1,38 +1,49 @@
-.App {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.viewData {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  row-gap: 5vh;
+}
+
+.rowData {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  column-gap: normal;
+}
+
+.dataField {
+  /* border: solid blue 2px; */
+}
+
+.showLineRight {
+  border-right: dotted blue 3px;
+}
+
+.showLineBotton {
+  border-bottom: dotted blue 3px;
+}
+
+.dataField h2 {
+  color: black;
   text-align: center;
+  font-size: 25px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* View Flags */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.viewFlags {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  column-gap: normal;
 }

@@ -6,6 +6,12 @@ import { data } from './data/data'
 // import Test from './test'
 import './App.css'
 
+interface dataFiltered {
+  dataLabel: string
+  countryOneData: string | number
+  countryTwoData: string | number
+}
+
 function App() {
   const [countryImage, setCountryImage] = useState<any>(
     'https://countryflagsapi.com/png/bra'
@@ -27,11 +33,6 @@ function App() {
   const [countryTwoData, setCountryTwoData] = useState()
 
   // Filterad Data to be shown.
-  interface dataFiltered {
-    dataLabel: string
-    countryOneData: string | number
-    countryTwoData: string | number
-  }
 
   const [dataFiltered, setDataFiltered] = useState<Array<dataFiltered>>([])
 
@@ -87,14 +88,30 @@ function App() {
 
       console.log(label)
 
-      // const countryOneData ===
+      let countryOneData
+
+      if (listCountryOne[0] !== undefined) {
+        const numberString = listCountryOne[0][4]
+        const number = parseFloat(numberString.toString())
+        countryOneData = number.toLocaleString()
+      } else {
+        countryOneData = 'N/A'
+      }
+
+      let countryTwoData
+
+      if (listCountryTwo[0] !== undefined) {
+        const numberString = listCountryTwo[0][4]
+        const number = parseFloat(numberString.toString())
+        countryTwoData = number.toLocaleString()
+      } else {
+        countryTwoData = 'N/A'
+      }
 
       const temporaryFilteredObject: dataFiltered = {
         dataLabel: label,
-        countryOneData:
-          listCountryOne[0] !== undefined ? listCountryOne[0][4] : 'N/A',
-        countryTwoData:
-          listCountryTwo[0] !== undefined ? listCountryTwo[0][4] : 'N/A',
+        countryOneData: countryOneData,
+        countryTwoData: countryTwoData,
       }
 
       temporaryWholeDataFilteredObject.push(temporaryFilteredObject)
@@ -128,14 +145,25 @@ function App() {
         style={{ width: '300px' }}
       /> */}
 
-      {/* <img
-        crossOrigin='anonymous'
-        src='https://countryflagsapi.com/png/ae'
+      <img
+        // crossOrigin='anonymous'
+        src='https://flagsapi.com/CA/flat/64.png'
         alt='United Arab Emirates flag'
         style={{ width: '300px' }}
-      /> */}
+      />
 
       <button onClick={() => console.log(dataFiltered)}>DATA</button>
+
+      {countryOneImage && (
+        <ViewFlags
+          countryOneImage={countryOneImage}
+          countryTwoImage={countryTwoImage}
+          countryOneName={countryOne}
+          countryTwoName={countryTwo}
+        />
+      )}
+
+      {dataFiltered.length > 0 && <ViewData data={dataFiltered} />}
     </div>
   )
 }
@@ -143,3 +171,58 @@ function App() {
 // function CountrySelector(props: )
 
 export default App
+
+interface interfaceViewFlags {
+  countryOneImage: string
+  countryTwoImage: string
+  countryOneName: string
+  countryTwoName: string
+}
+
+function ViewFlags(props: interfaceViewFlags) {
+  return (
+    <div className='viewFlags'>
+      <div></div>
+      <div>
+        <img
+          // crossOrigin='anonymous'
+          src={props.countryOneImage}
+          alt={`${props.countryOneName} National Flag`}
+        />
+      </div>
+      <div>
+        <img
+          // crossOrigin='anonymous'
+          src={props.countryTwoImage}
+          alt={`${props.countryTwoName} National Flag`}
+        />
+      </div>
+    </div>
+  )
+}
+
+interface interfaceViewData {
+  data: Array<dataFiltered>
+}
+
+function ViewData(props: interfaceViewData) {
+  return (
+    <div className='viewData'>
+      {props.data.map((field, index) => {
+        return (
+          <div key={index} className='rowData'>
+            <div className='dataField  showLineBotton'>
+              <h2>{field.dataLabel}</h2>
+            </div>
+            <div className='dataField showLineBotton'>
+              <h2>{field.countryOneData}</h2>
+            </div>
+            <div className='dataField showLineBotton'>
+              <h2>{field.countryTwoData}</h2>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}

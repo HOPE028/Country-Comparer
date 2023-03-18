@@ -22,6 +22,7 @@
   position: relative;
   top: 5px;
   width: 20px;
+  cursor: pointer;
 }
 
 /* View Data */

@@ -34,6 +34,7 @@
 
 .navbar-center {
   font-size: 30px;
+  text-align: center;
 }
 
 .navbar-left {
@@ -42,4 +43,20 @@
 
 .navbar-right {
   margin-left: auto;
+}
+
+@media screen and (max-width: 700px) {
+  .navbar-center {
+    font-size: 25px;
+  }
+
+  .navbar-item {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
 }

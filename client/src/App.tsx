@@ -5,6 +5,8 @@ import { DataCodes } from './data/DataCode'
 import { data } from './data/data'
 import { countryToCode2Digit } from './data/countryToCode2Digit'
 import Navbar from './components/Navbar'
+import Loading from './pictures/Loading.svg'
+import Footer from './components/Footer'
 // import Test from './test'
 import './App.css'
 
@@ -15,9 +17,8 @@ interface dataFiltered {
 }
 
 function App() {
-  const [countryImage, setCountryImage] = useState<any>(
-    'https://countryflagsapi.com/png/bra'
-  )
+  // Current Year
+  const currentYear = new Date().getFullYear()
 
   // Country Chosen.
   const [countryOne, setCountryOne] = useState<string>('')
@@ -38,6 +39,12 @@ function App() {
   const [countryOneData, setCountryOneData] = useState()
   const [countryTwoData, setCountryTwoData] = useState()
 
+  // Show Data Section
+  const [showData, setShowData] = useState(false)
+
+  // Loading
+  const [loading, setLoading] = useState(false)
+
   // Filterad Data to be shown.
 
   const [dataFiltered, setDataFiltered] = useState<Array<dataFiltered>>([])
@@ -48,6 +55,8 @@ function App() {
     countryOne: string,
     countryTwo: string
   ) => {
+    setShowData(true)
+    setLoading(true)
     const countryOne2DigitCode = countryToCode2Digit[countryOne]
     const countryTwo2DigitCode = countryToCode2Digit[countryTwo]
 
@@ -135,6 +144,7 @@ function App() {
     }
 
     setDataFiltered(temporaryWholeDataFilteredObject)
+    setLoading(false)
   }
 
   // useEffect(() => {
@@ -179,7 +189,11 @@ function App() {
           countryTwoName={countryTwo}
         />
       )}
-      {dataFiltered.length > 0 && <ViewData data={dataFiltered} />}
+      {showData && <ViewData data={dataFiltered} loading={loading} />}
+
+      <div style={{ marginBottom: '120px' }}></div>
+
+      <Footer year={currentYear} />
     </div>
   )
 }
@@ -244,28 +258,33 @@ function ViewFlags(props: interfaceViewFlags) {
 
 interface interfaceViewData {
   data: Array<dataFiltered>
+  loading: boolean
 }
 
 function ViewData(props: interfaceViewData) {
   return (
     <div className='container'>
-      <div className='viewData'>
-        {props.data.map((field, index) => {
-          return (
-            <div key={index} className='rowData'>
-              <div className='dataField  showLineBotton'>
-                <h2>{field.dataLabel}</h2>
+      {props.loading ? (
+        <img src={Loading} alt='Loading..' />
+      ) : (
+        <div className='viewData'>
+          {props.data.map((field, index) => {
+            return (
+              <div key={index} className='rowData'>
+                <div className='dataField  showLineBotton'>
+                  <h2>{field.dataLabel}</h2>
+                </div>
+                <div className='dataField showLineBotton'>
+                  <h2>{field.countryOneData}</h2>
+                </div>
+                <div className='dataField showLineBotton'>
+                  <h2>{field.countryTwoData}</h2>
+                </div>
               </div>
-              <div className='dataField showLineBotton'>
-                <h2>{field.countryOneData}</h2>
-              </div>
-              <div className='dataField showLineBotton'>
-                <h2>{field.countryTwoData}</h2>
-              </div>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

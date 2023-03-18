@@ -4,6 +4,7 @@ import ChoosingCountries from './components/ChoosingCountries'
 import { DataCodes } from './data/DataCode'
 import { data } from './data/data'
 import { countryToCode2Digit } from './data/countryToCode2Digit'
+import Navbar from './components/Navbar'
 // import Test from './test'
 import './App.css'
 
@@ -147,6 +148,10 @@ function App() {
 
   return (
     <div>
+      <Navbar />
+
+      <div style={{ marginTop: 'calc(5vh + 50px)' }}></div>
+
       <ChoosingCountries
         countryOne={countryOne}
         countryTwo={countryTwo}
@@ -154,17 +159,7 @@ function App() {
         setCountryTwo={setCountryTwo}
         fetchData={fetchData}
       />
-      {/* <img
-        crossOrigin='anonymous'
-        src={countryImage}
-        style={{ width: '300px' }}
-      /> */}
-      {/* <img
-        // crossOrigin='anonymous'
-        src='https://flagsapi.com/CA/flat/64.png'
-        alt='United Arab Emirates flag'
-        style={{ width: '300px' }}
-      /> */}
+
       {/* <button onClick={() => console.log(dataFiltered)}>DATA</button> */}
 
       <div style={{ marginTop: '5vh' }}></div>
@@ -200,13 +195,15 @@ interface interfaceViewNames {
 
 function ViewNames(props: interfaceViewNames) {
   return (
-    <div className='viewNames'>
-      <div></div>
-      <div className='name'>
-        <h1>{props.countryOneName}</h1>
-      </div>
-      <div className='name'>
-        <h1>{props.countryTwoName}</h1>
+    <div className='container'>
+      <div className='viewNames'>
+        <div></div>
+        <div className='name'>
+          <h1>{props.countryOneName}</h1>
+        </div>
+        <div className='name'>
+          <h1>{props.countryTwoName}</h1>
+        </div>
       </div>
     </div>
   )
@@ -221,23 +218,25 @@ interface interfaceViewFlags {
 
 function ViewFlags(props: interfaceViewFlags) {
   return (
-    <div className='viewFlags'>
-      <div></div>
-      <div className='flag'>
-        <img
-          // crossOrigin='anonymous'
-          className='hundred'
-          src={props.countryOneImage}
-          alt={`${props.countryOneName} National Flag`}
-        />
-      </div>
-      <div className='flag'>
-        <img
-          className='hundred'
-          // crossOrigin='anonymous'
-          src={props.countryTwoImage}
-          alt={`${props.countryTwoName} National Flag`}
-        />
+    <div className='container'>
+      <div className='viewFlags'>
+        <div></div>
+        <div className='flag'>
+          <img
+            // crossOrigin='anonymous'
+            className='hundred'
+            src={props.countryOneImage}
+            alt={`${props.countryOneName} National Flag`}
+          />
+        </div>
+        <div className='flag'>
+          <img
+            className='hundred'
+            // crossOrigin='anonymous'
+            src={props.countryTwoImage}
+            alt={`${props.countryTwoName} National Flag`}
+          />
+        </div>
       </div>
     </div>
   )
@@ -249,22 +248,24 @@ interface interfaceViewData {
 
 function ViewData(props: interfaceViewData) {
   return (
-    <div className='viewData'>
-      {props.data.map((field, index) => {
-        return (
-          <div key={index} className='rowData'>
-            <div className='dataField  showLineBotton'>
-              <h2>{field.dataLabel}</h2>
+    <div className='container'>
+      <div className='viewData'>
+        {props.data.map((field, index) => {
+          return (
+            <div key={index} className='rowData'>
+              <div className='dataField  showLineBotton'>
+                <h2>{field.dataLabel}</h2>
+              </div>
+              <div className='dataField showLineBotton'>
+                <h2>{field.countryOneData}</h2>
+              </div>
+              <div className='dataField showLineBotton'>
+                <h2>{field.countryTwoData}</h2>
+              </div>
             </div>
-            <div className='dataField showLineBotton'>
-              <h2>{field.countryOneData}</h2>
-            </div>
-            <div className='dataField showLineBotton'>
-              <h2>{field.countryTwoData}</h2>
-            </div>
-          </div>
-        )
-      })}
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -43,7 +43,7 @@ export default function ChoosingCountries(props: interfaceChoosingCountries) {
   }
 
   return (
-    <div className='Choosing_Countries_Container'>
+    <div className='container'>
       <div className='Choosing_Countries'>
         <h3 style={{ color: 'red' }}>{error}</h3>
         <CountrySelector

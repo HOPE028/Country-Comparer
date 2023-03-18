@@ -5,4 +5,7 @@ export const data = [
   'SL.UEM.TOTL.ZS',
   'NY.GDP.MKTP.CD',
   'NY.GDP.PCAP.CD',
+  'SP.URB.TOTL.IN.ZS',
+  'SL.TLF.ACTI.ZS',
+  'SL.TLF.CACT.FE.ZS',
 ]

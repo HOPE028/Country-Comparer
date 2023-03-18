@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import ChoosingCountries from './components/ChoosingCountries'
 import { DataCodes } from './data/DataCode'
@@ -31,13 +31,6 @@ function App() {
   // Api endpoint for country flags
   const [countryOneImage, setCountryOneImage] = useState<string>('')
   const [countryTwoImage, setCountryTwoImage] = useState<string>('')
-
-  // Total Data
-  const [allData, setAllData] = useState()
-
-  // Country Data
-  const [countryOneData, setCountryOneData] = useState()
-  const [countryTwoData, setCountryTwoData] = useState()
 
   // Show Data Section
   const [showData, setShowData] = useState(false)

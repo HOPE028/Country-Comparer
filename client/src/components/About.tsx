@@ -19,7 +19,7 @@ export default function About() {
           Nations, and more. <br /> <br />
           All data is gathered through the Nasdaq World Bank API and flags from
           FlagsPedia.net, and are the most recent statistics available. These
-          statistics are <b>citable</b> , making them useful for students and
+          statistics are <b>citable</b>, making them useful for students and
           researchers. <br /> <br />
           COUNTRY COMPARE-er is part of the <b>HOPE</b> open-source project,
           founded by{' '}

@@ -198,7 +198,7 @@ export const countryToCode2Digit: interfaceCountryCodes = {
   Réunion: 're',
   Romania: 'ro',
   Serbia: 'rs',
-  Russia: 'ru',
+  'Russian Federation': 'ru',
   Rwanda: 'rw',
   'Saudi Arabia': 'sa',
   'Solomon Islands': 'sb',

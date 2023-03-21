@@ -62,7 +62,7 @@ export const countryCodes: interfaceCountryCodes = {
   'Dominican Republic': 'DOM',
   Dominica: 'DMA',
   Ecuador: 'ECU',
-  'Egypt, Arab Rep.': 'EGY',
+  Egypt: 'EGY',
   'El Salvador': 'SLV',
   'Equatorial Guinea': 'GNQ',
   Eritrea: 'ERI',

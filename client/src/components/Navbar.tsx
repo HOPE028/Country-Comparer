@@ -7,7 +7,7 @@ export default function Navbar() {
     <div className='navbar'>
       <a
         className='navbar-item navbar-left'
-        href='https://github.com/HOPE028/HOPE'
+        href='https://hopetools.netlify.app/'
       >
         HOPE
       </a>

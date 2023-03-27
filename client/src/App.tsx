@@ -68,7 +68,9 @@ function App() {
     // Creating urls for country data
     const WBDataURL = `https://data.nasdaq.com/api/v3/datatables/WB/DATA?series_id=${data.map(
       (field) => `${field},`
-    )}&country_code=${countryOneCode},${countryTwoCode}&api_key=wCaQ4RwKqax92nzyh_px`
+    )}&country_code=${countryOneCode},${countryTwoCode}&api_key=${
+      process.env.REACT_APP_API_KEY
+    }}`
 
     axios
       .get(WBDataURL)
